@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda Yoseli & Bryan</title>
@@ -245,7 +247,7 @@
         /* NOMBRES CON EL TONO DORADO EXACTO */
         .pase-nombre-cursiva {
             font-family: 'Alex Brush', cursive; 
-            font-size: 2.6rem; 
+            font-size: 2.3rem; 
             color: #c5ab85;
             font-weight: 400; 
             line-height: 1.25; 
@@ -332,6 +334,7 @@
         .new-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .new-icon img { width: 100%; height: 100%; object-fit: contain; }
 
+        /* Elimina el cuadro blanco al invertir el color */
         .invert-icon { 
             filter: invert(1); 
             mix-blend-mode: multiply; 
@@ -379,7 +382,9 @@
         }
         .player-btn { background: #1a1a1a; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 0.7rem; }
         .music-title { font-size: 0.7rem; color: #444; }
-    </style></head><body>
+    </style>
+</head>
+<body>
 
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof iframeCargado !== 'undefined') { iframeCargado(); }"></iframe>
 
@@ -433,7 +438,7 @@
         <div id="rsvpModalOverlay" class="modal-overlay" onclick="closeRsvpModal()">
             <div class="rsvp-modal" onclick="event.stopPropagation()">
                 <h4 id="rsvp-modal-title">¿Estás seguro en asistir a la boda?</h4>
-                <p id="rsvp-status-text">Nos haría muy felices contar contigo en este día tan especial.</p>
+                <p id="rsvp-status-text">Nos haría muy felices contar con tu presencia en este día tan especial.</p>
                 <div class="rsvp-buttons-container" id="rsvp-actions">
                     <button class="btn-modal-rsvp btn-modal-yes" onclick="submitRSVP('Sí')">Sí</button>
                     <button class="btn-modal-rsvp btn-modal-no" onclick="submitRSVP('No')">No</button>
@@ -455,12 +460,12 @@
             <p class="pase-subtitulo">PASE PERSONAL PARA EL EVENTO</p>
             
             <div style="font-size: 0.65rem; text-transform: uppercase; color: #c5ab85; letter-spacing: 1.5px; margin-bottom: 2px;">INVITADO(S):</div>
-            <div id="pase-nombres" class="pase-nombre-cursiva">Benjamin <span style="font-family: 'Parisienne', cursive; font-size: 2.2rem; color: #c5ab85; margin: 0 2px; vertical-align: middle;">&</span> Lucía</div>
+            <div id="pase-nombres" class="pase-nombre-cursiva">Benjamín y Lucía</div>
 
             <div class="pase-info-grid">
                 <div class="pase-info-block">
                     <div class="pase-info-label">Mesa</div>
-                    <div id="pase-mesa" class="pase-info-value">Especial</div>
+                    <div id="pase-mesa" class="pase-info-value">2</div>
                 </div>
                 <div class="pase-info-block">
                     <div class="pase-info-label">Cupos</div>
@@ -614,23 +619,75 @@
     <script>
         const music = document.getElementById('bg-music');
         const playPauseBtn = document.getElementById('play-pause-btn');
+        let enviandoFormulario = false;
         let opcionSeleccionada = "";
 
         function startInvitation() {
-            const welcomeScreen = document.getElementById('welcome-screen');
-            welcomeScreen.style.opacity = '0';
-            setTimeout(() => {
-                welcomeScreen.style.display = 'none';
-            }, 1000);
+            try {
+                const welcomeScreen = document.getElementById('welcome-screen');
+                if (welcomeScreen) {
+                    welcomeScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        welcomeScreen.style.display = 'none';
+                    }, 1000);
+                }
 
-            if (music) {
-                music.play().catch(e => console.log("Audio play prevented:", e));
-                document.getElementById('music-player').style.display = 'flex';
+                if (music) {
+                    const playPromise = music.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(e => console.log("Audio play prevented:", e));
+                    }
+                    const playerEl = document.getElementById('music-player');
+                    if (playerEl) playerEl.style.display = 'flex';
+                }
+
+                const dateEl = document.getElementById('animated-date');
+                if (dateEl) dateEl.classList.add('start-typing');
+            } catch (err) {
+                console.log("Error al abrir la invitación:", err);
+                // Aunque falle la música o la animación, la pantalla de bienvenida se oculta igual
+                const welcomeScreen = document.getElementById('welcome-screen');
+                if (welcomeScreen) welcomeScreen.style.display = 'none';
+            }
+        }
+
+        // ===================== CUENTA REGRESIVA =====================
+        // Fecha y hora exacta de la boda: 28 de Agosto de 2026, 7:00 PM
+        const weddingDate = new Date("2026-08-28T19:00:00").getTime();
+        let countdownInterval;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if (distance <= 0) {
+                if (daysEl) daysEl.textContent = "00";
+                if (hoursEl) hoursEl.textContent = "00";
+                if (minutesEl) minutesEl.textContent = "00";
+                if (secondsEl) secondsEl.textContent = "00";
+                clearInterval(countdownInterval);
+                return;
             }
 
-            const dateEl = document.getElementById('animated-date');
-            if (dateEl) dateEl.classList.add('start-typing');
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
         }
+
+        // Se calcula una vez de inmediato (para no esperar 1 segundo) y luego cada segundo
+        updateCountdown();
+        countdownInterval = setInterval(updateCountdown, 1000);
 
         function toggleMusic() {
             if (music.paused) {
@@ -658,36 +715,25 @@
             document.getElementById('rsvpModalOverlay').classList.remove('show');
         }
 
-        function submitRSVP(respuesta) {
-            opcionSeleccionada = respuesta;
+        function submitRSVP(opcion) {
+            opcionSeleccionada = opcion;
             closeRsvpModal();
-            if (respuesta === 'Sí') {
-                document.getElementById('btn-principal-rsvp').style.display = 'none';
-                document.getElementById('msg-pase-exito').style.display = 'block';
+            
+            const btnPrincipal = document.getElementById('btn-principal-rsvp');
+            const msgExito = document.getElementById('msg-pase-exito');
+            const btnDecline = document.getElementById('msg-pase-decline');
+
+            if (opcion === 'Sí') {
+                btnPrincipal.style.display = 'none';
+                msgExito.style.display = 'block';
+                btnDecline.style.display = 'none';
             } else {
-                document.getElementById('btn-principal-rsvp').style.display = 'none';
-                document.getElementById('msg-pase-decline').style.display = 'block';
+                btnPrincipal.style.display = 'none';
+                msgExito.style.display = 'none';
+                btnDecline.style.display = 'block';
+                btnDecline.innerText = "No Asistiré";
             }
         }
-
-        // Cuenta regresiva
-        const weddingDate = new Date('August 28, 2026 19:00:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            if (distance < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+    </script>
+</body>
+</html>
