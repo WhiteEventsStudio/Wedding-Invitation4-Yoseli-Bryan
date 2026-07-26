@@ -658,11 +658,16 @@
             document.getElementById('rsvpModalOverlay').classList.remove('show');
         }
 
-        function submitRSVP(opcion) {
-            opcionSeleccionada = opcion;
+        function submitRSVP(respuesta) {
+            opcionSeleccionada = respuesta;
             closeRsvpModal();
-            document.getElementById('btn-principal-rsvp').style.display = 'none';
-            document.getElementById('msg-pase-exito').style.display = 'block';
+            if (respuesta === 'Sí') {
+                document.getElementById('btn-principal-rsvp').style.display = 'none';
+                document.getElementById('msg-pase-exito').style.display = 'block';
+            } else {
+                document.getElementById('btn-principal-rsvp').style.display = 'none';
+                document.getElementById('msg-pase-decline').style.display = 'block';
+            }
         }
 
         // Cuenta regresiva
@@ -683,4 +688,6 @@
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
