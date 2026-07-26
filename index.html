@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<!DOCTYPE html><html lang="es"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda Yoseli & Bryan</title>
@@ -334,7 +332,6 @@
         .new-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .new-icon img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* Elimina el cuadro blanco al invertir el color */
         .invert-icon { 
             filter: invert(1); 
             mix-blend-mode: multiply; 
@@ -382,9 +379,7 @@
         }
         .player-btn { background: #1a1a1a; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 0.7rem; }
         .music-title { font-size: 0.7rem; color: #444; }
-    </style>
-</head>
-<body>
+    </style></head><body>
 
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof iframeCargado !== 'undefined') { iframeCargado(); }"></iframe>
 
@@ -460,12 +455,12 @@
             <p class="pase-subtitulo">PASE PERSONAL PARA EL EVENTO</p>
             
             <div style="font-size: 0.65rem; text-transform: uppercase; color: #c5ab85; letter-spacing: 1.5px; margin-bottom: 2px;">INVITADO(S):</div>
-            <div id="pase-nombres" class="pase-nombre-cursiva">Victor y Felicitas</div>
+            <div id="pase-nombres" class="pase-nombre-cursiva">Benjamin <span style="font-family: 'Parisienne', cursive; font-size: 2.2rem; color: #c5ab85; margin: 0 2px; vertical-align: middle;">&</span> Lucía</div>
 
             <div class="pase-info-grid">
                 <div class="pase-info-block">
                     <div class="pase-info-label">Mesa</div>
-                    <div id="pase-mesa" class="pase-info-value">2</div>
+                    <div id="pase-mesa" class="pase-info-value">Especial</div>
                 </div>
                 <div class="pase-info-block">
                     <div class="pase-info-label">Cupos</div>
@@ -619,7 +614,6 @@
     <script>
         const music = document.getElementById('bg-music');
         const playPauseBtn = document.getElementById('play-pause-btn');
-        let enviandoFormulario = false;
         let opcionSeleccionada = "";
 
         function startInvitation() {
@@ -667,22 +661,26 @@
         function submitRSVP(opcion) {
             opcionSeleccionada = opcion;
             closeRsvpModal();
-            
-            const btnPrincipal = document.getElementById('btn-principal-rsvp');
-            const msgExito = document.getElementById('msg-pase-exito');
-            const btnDecline = document.getElementById('msg-pase-decline');
-
-            if (opcion === 'Sí') {
-                btnPrincipal.style.display = 'none';
-                msgExito.style.display = 'block';
-                btnDecline.style.display = 'none';
-            } else {
-                btnPrincipal.style.display = 'none';
-                msgExito.style.display = 'none';
-                btnDecline.style.display = 'block';
-                btnDecline.innerText = "No Asistiré";
-            }
+            document.getElementById('btn-principal-rsvp').style.display = 'none';
+            document.getElementById('msg-pase-exito').style.display = 'block';
         }
-    </script>
-</body>
-</html>
+
+        // Cuenta regresiva
+        const weddingDate = new Date('August 28, 2026 19:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
