@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda Yoseli & Bryan</title>
     
-    <!-- =================================================================== -->
     <!-- CONFIGURACIÓN DE VISTA PREVIA GRANDE (WHATSAPP, FACEBOOK, TWITTER) -->
-    <!-- =================================================================== -->
     <meta property="og:title" content="Yoseli & Bryan - Nuestra Boda">
     <meta property="og:description" content="Nos encantaría que nos acompañes este día tan especial. Abre el enlace para ver la invitación completa por favor confirmar asistencia.">
     <meta property="og:image" content="https://jeffkillah1510.github.io/boda-Bryan-y-Yoseli/foto_portada.jpg">
@@ -17,12 +15,10 @@
     <meta property="og:url" content="https://jeffkillah1510.github.io/boda-Bryan-y-Yoseli/">
     <meta property="og:type" content="website">
 
-    <!-- FORZAR FORMATO DE TARJETA GRANDE CON FOTO ARRIBA -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Yoseli & Bryan - Nuestra Boda">
     <meta name="twitter:description" content="Nos encantaría que nos acompañes este día tan especial. Abre el enlace para ver la invitación completa por favor confirmar asistencia.">
     <meta name="twitter:image" content="https://jeffkillah1510.github.io/boda-Bryan-y-Yoseli/foto_portada.jpg">
-    <!-- =================================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +41,7 @@
         }
         
         .names-cursive { 
-            font-family: 'Alex Brush', cursive; 
+            font-family: 'AlexBrush', cursive; 
             font-size: 3.4rem; 
             color: #1a1a1a;
             font-weight: 400;
@@ -244,7 +240,6 @@
         }
         .pase-subtitulo { font-size: 0.75rem; color: #a3a3a3; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 32px; }
         
-        /* NOMBRES CON EL TONO DORADO EXACTO */
         .pase-nombre-cursiva {
             font-family: 'Alex Brush', cursive; 
             font-size: 2.6rem; 
@@ -334,7 +329,6 @@
         .new-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .new-icon img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* Elimina el cuadro blanco al invertir el color */
         .invert-icon { 
             filter: invert(1); 
             mix-blend-mode: multiply; 
@@ -386,7 +380,7 @@
 </head>
 <body>
 
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof iframeCargado !== 'undefined') { iframeCargado(); }"></iframe>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <div id="welcome-screen">
         <h2 style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: #777; margin-bottom: 10px;">Nuestra Boda</h2>
@@ -424,7 +418,7 @@
         <div id="calendarModalOverlay" class="modal-overlay" onclick="closeCalendarModal()">
             <div class="calendar-modal" onclick="event.stopPropagation()">
                 <div class="modal-options-list">
-                    <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:https%3A%2F%2Fcalendar.google.com%0ADTSTART:20260828T190000%0ADTEND:20260829T020000%0ASUMMARY:Boda%20Yoseli%20%26%20Bryan%0ADESCRIPTION:%C2%A1Acomp%C3%A1%C3%B1anos%20a%20celebrar%20nuestra%20boda%21%0ALOCATION:Jard%C3%ADn%20y%20Terraza%20Puerta%20al%20Para%C3%ADso%2C%20C.%20Espa%C3%B1a%208451%2C%20Ju%C3%A1rez%2C%2022040%20Tijuana%2C%20B.C.%0AEND:VEVENT%0AEND:VCALENDAR" download="Boda_Yoseli_y_Bryan.ics">
+                    <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:https%3A%2F%2Fcalendar.google.com%0ADTSTART:20260828T190000%0ADTEND:20260829T020000%0ASUMMARY:Boda%20Yoseli%20%26%20Bryan%0ADESCRIPTION:%C2%A1Acomp%C3%A1%C3%B1anos%20a%20celebrar%20nuestra%20boda%21%0ALOCATION:Jard%C3%ADn%20y%20Terraza%20Puerta%20al%20Para%C3%ADso%2C%20C.%20Espa%C3%n%208451%2C%20Ju%C3%A1rez%2C%2022040%20Tijuana%2C%20B.C.%0AEND:VEVENT%0AEND:VCALENDAR" download="Boda_Yoseli_y_Bryan.ics">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple logo"> Apple
                     </a>
                     <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda+Yoseli+%26+Bryan&amp;dates=20260828T190000/20260829T020000&amp;details=¡Acompáñanos+a+celebrar+nuestra+boda!+Por+favor+confirma+tu+asistencia.&amp;location=Jardín+y+Terraza+Puerta+al+Paraíso,+C.+España+8451,+Juárez,+22040+Tijuana,+B.C.&amp;sf=true&amp;output=xml" target="_blank">
@@ -446,7 +440,6 @@
             </div>
         </div>
 
-        <!-- FOTO 2 (ARCO DE PIEDRA) -->
         <section class="single-photo-section">
             <img src="foto2.jpg?v=9" 
                  onerror="if (this.src.indexOf('.jpg') !== -1) this.src = 'foto2.jpeg?v=9'; else if (this.src.indexOf('.jpeg') !== -1) this.src = 'foto2.png?v=9';" 
@@ -454,7 +447,6 @@
                  alt="Yoseli y Bryan en el arco de piedra">
         </section>
 
-        <!-- PASE DE ACCESO -->
         <div class="pase-negro-container">
             <h3 class="pase-titulo-oro">PASE DE ACCESO</h3>
             <p class="pase-subtitulo">PASE PERSONAL PARA EL EVENTO</p>
@@ -491,7 +483,6 @@
             <p>PARA NOSOTROS ES MUY IMPORTANTE COMPARTIR ESTE DÍA CONTIGO. POR FAVOR AYÚDANOS A CONFIRMAR TU ASISTENCIA ANTES DEL DÍA 10 DE AGOSTO DE 2026.</p>
         </div>
 
-        <!-- FOTO 3 (BAJO EL ÁRBOL) -->
         <section class="single-photo-section" style="padding-bottom: 10px;">
             <img src="foto3.jpg?v=9" 
                  onerror="if (this.src.indexOf('.jpg') !== -1) this.src = 'foto3.jpeg?v=9'; else if (this.src.indexOf('.jpeg') !== -1) this.src = 'foto3.png?v=9';" 
@@ -499,7 +490,6 @@
                  alt="Yoseli y Bryan bajo el árbol">
         </section>
 
-        <!-- CRONOGRAMA -->
         <section class="cronograma-section">
             <h3 class="section-title">CRONOGRAMA DEL EVENTO</h3>
             
@@ -619,8 +609,6 @@
     <script>
         const music = document.getElementById('bg-music');
         const playPauseBtn = document.getElementById('play-pause-btn');
-        let enviandoFormulario = false;
-        let opcionSeleccionada = "";
 
         function startInvitation() {
             const welcomeScreen = document.getElementById('welcome-screen');
@@ -629,13 +617,11 @@
                 welcomeScreen.style.display = 'none';
             }, 1000);
 
-            // Iniciar música si existe
             if (music) {
                 music.play().catch(e => console.log("Audio play prevented:", e));
                 document.getElementById('music-player').style.display = 'flex';
             }
 
-            // Iniciar animación de fecha
             const dateEl = document.getElementById('animated-date');
             if (dateEl) dateEl.classList.add('start-typing');
         }
@@ -650,22 +636,43 @@
             }
         }
 
+        function openCalendarModal() {
+            document.getElementById('calendarModalOverlay').classList.add('show');
+        }
+
+        function closeCalendarModal() {
+            document.getElementById('calendarModalOverlay').classList.remove('show');
+        }
+
+        function openRsvpModal() {
+            document.getElementById('rsvpModalOverlay').classList.add('show');
+        }
+
+        function closeRsvpModal() {
+            document.getElementById('rsvpModalOverlay').classList.remove('show');
+        }
+
+        function submitRSVP(respuesta) {
+            closeRsvpModal();
+            if (respuesta === 'Sí') {
+                document.getElementById('btn-principal-rsvp').style.display = 'none';
+                document.getElementById('msg-pase-exito').style.display = 'block';
+            }
+        }
+
         // Cuenta regresiva
         const weddingDate = new Date("August 28, 2026 19:00:00").getTime();
-
-        function updateCountdown() {
+        setInterval(() => {
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
-            if (distance < 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
-                return;
+            if (distance > 0) {
+                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floorNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+        }, 1000);
+    </script>
+</body>
+</html>
